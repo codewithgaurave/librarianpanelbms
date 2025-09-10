@@ -81,11 +81,11 @@ const Login = () => {
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div
-          className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 opacity-10 blur-3xl"
           style={{ background: themeColors.accent }}
         ></div>
         <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 opacity-10 blur-3xl"
           style={{ background: themeColors.primary }}
         ></div>
       </div>
@@ -93,7 +93,7 @@ const Login = () => {
       {/* Main card */}
       <div className="w-full max-w-md z-10">
         <div
-          className="backdrop-blur-xl rounded-3xl shadow-2xl border p-8 md:p-10"
+          className="backdrop-blur-xl shadow-2xl border p-8 md:p-10"
           style={{
             backgroundColor: themeColors.hover.background,
             color: themeColors.text,
@@ -101,7 +101,7 @@ const Login = () => {
           }}
         >
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 mb-6 shadow-lg rounded-2xl">
+            <div className="inline-flex items-center justify-center w-20 h-20 mb-6 shadow-lg">
               <img src="./img/bookmyspace.jpeg" alt="BookMySpace Logo" />
             </div>
             <h1 className="text-3xl font-bold mb-2">Login as a Librarian</h1>
@@ -123,7 +123,7 @@ const Login = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none"
+                  className="w-full pl-11 pr-4 py-3 focus:ring-2 focus:outline-none"
                   style={{
                     backgroundColor: themeColors.background,
                     color: themeColors.text,
@@ -149,7 +149,7 @@ const Login = () => {
                   autoComplete="current-password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full pl-11 pr-12 py-3 rounded-xl focus:ring-2 focus:outline-none"
+                  className="w-full pl-11 pr-12 py-3 focus:ring-2 focus:outline-none"
                   style={{
                     backgroundColor: themeColors.background,
                     color: themeColors.text,
@@ -194,10 +194,10 @@ const Login = () => {
                 backgroundColor: themeColors.primary,
                 color: "#fff",
               }}
-              className="w-full py-3 px-4 rounded-xl font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full py-3 px-4 font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isLoading ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white animate-spin"></div>
               ) : (
                 <>
                   Sign In <ArrowRight className="w-4 h-4 ml-2" />
