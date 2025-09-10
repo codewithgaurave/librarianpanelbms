@@ -3,7 +3,6 @@ import { useTheme } from "../context/ThemeContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import passwordAPI from "../apis/passwordAPI";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Lock, ArrowRight, ArrowLeft, CheckCircle2, Shield } from "lucide-react";
 
@@ -20,8 +19,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await passwordAPI.forgotPassword(email);
-      console.log(res);
+      await passwordAPI.forgotPassword(email);
       toast.success("OTP sent to your email");
       setStep(2);
     } catch (err) {
@@ -70,7 +68,7 @@ const ForgotPassword = () => {
           style={{
             backgroundColor: themeColors.hover.background,
             color: themeColors.text,
-            borderColor: "#ccc",
+            borderColor: themeColors.active.background,
           }}
         >
           {/* Progress indicator */}
@@ -80,10 +78,10 @@ const ForgotPassword = () => {
                 <div
                   key={i}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i <= step ? 'opacity-100' : 'opacity-30'
+                    i <= step ? "opacity-100" : "opacity-30"
                   }`}
-                  style={{ 
-                    backgroundColor: i <= step ? themeColors.primary : `${themeColors.primary}50`
+                  style={{
+                    backgroundColor: i <= step ? themeColors.primary : `${themeColors.primary}50`,
                   }}
                 />
               ))}
@@ -94,7 +92,7 @@ const ForgotPassword = () => {
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl shadow-lg">
               {step === 1 && (
-                <div 
+                <div
                   className="w-full h-full flex items-center justify-center rounded-2xl"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
@@ -102,7 +100,7 @@ const ForgotPassword = () => {
                 </div>
               )}
               {step === 2 && (
-                <div 
+                <div
                   className="w-full h-full flex items-center justify-center rounded-2xl"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
@@ -110,7 +108,7 @@ const ForgotPassword = () => {
                 </div>
               )}
               {step === 3 && (
-                <div 
+                <div
                   className="w-full h-full flex items-center justify-center rounded-2xl"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
@@ -118,13 +116,13 @@ const ForgotPassword = () => {
                 </div>
               )}
             </div>
-            
+
             <h1 className="text-2xl md:text-3xl font-bold mb-2">
               {step === 1 && "Forgot Password"}
               {step === 2 && "Verify & Reset"}
               {step === 3 && "Success!"}
             </h1>
-            
+
             <p className="text-sm opacity-80">
               {step === 1 && "Enter your email to receive a reset code"}
               {step === 2 && "Enter the OTP and your new password"}
@@ -134,11 +132,7 @@ const ForgotPassword = () => {
 
           {/* Step 1: Email Input */}
           {step === 1 && (
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
               <form onSubmit={handleSendOtp} className="space-y-6">
                 <div>
                   <label htmlFor="email" className="text-sm font-medium block mb-2">
@@ -156,9 +150,9 @@ const ForgotPassword = () => {
                       required
                       className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border"
                       style={{
-                        backgroundColor: "#f9fafb",
-                        borderColor: "#ccc",
-                        focusRingColor: themeColors.primary,
+                        backgroundColor: themeColors.background,
+                        color: themeColors.text,
+                        borderColor: themeColors.hover.text,
                       }}
                       placeholder="Enter your email address"
                     />
@@ -185,10 +179,10 @@ const ForgotPassword = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                onClick={() => navigate('/login')}
+                onClick={() => navigate("/login")}
                 className="w-full mt-4 py-3 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center border-2"
                 style={{
-                  backgroundColor: 'transparent',
+                  backgroundColor: "transparent",
                   borderColor: `${themeColors.accent}50`,
                   color: themeColors.accent,
                 }}
@@ -201,11 +195,7 @@ const ForgotPassword = () => {
 
           {/* Step 2: OTP and New Password */}
           {step === 2 && (
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
               <form onSubmit={handleResetPassword} className="space-y-6">
                 <div>
                   <label htmlFor="otp" className="text-sm font-medium block mb-2">
@@ -223,9 +213,9 @@ const ForgotPassword = () => {
                       maxLength="6"
                       className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border text-center text-lg tracking-widest"
                       style={{
-                        backgroundColor: "#f9fafb",
-                        borderColor: "#ccc",
-                        focusRingColor: themeColors.primary,
+                        backgroundColor: themeColors.background,
+                        color: themeColors.text,
+                        borderColor: themeColors.hover.text,
                       }}
                       placeholder="Enter 6-digit OTP"
                     />
@@ -248,9 +238,9 @@ const ForgotPassword = () => {
                       required
                       className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border"
                       style={{
-                        backgroundColor: "#f9fafb",
-                        borderColor: "#ccc",
-                        focusRingColor: themeColors.primary,
+                        backgroundColor: themeColors.background,
+                        color: themeColors.text,
+                        borderColor: themeColors.hover.text,
                       }}
                       placeholder="Enter your new password"
                     />
@@ -277,10 +267,10 @@ const ForgotPassword = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                onClick={() => navigate('/login')}
+                onClick={() => navigate("/login")}
                 className="w-full mt-4 py-3 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center border-2"
                 style={{
-                  backgroundColor: 'transparent',
+                  backgroundColor: "transparent",
                   borderColor: `${themeColors.accent}50`,
                   color: themeColors.accent,
                 }}
@@ -300,14 +290,11 @@ const ForgotPassword = () => {
               className="text-center"
             >
               <div className="mb-6">
-                <div 
+                <div
                   className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
-                  <CheckCircle2 
-                    className="w-10 h-10" 
-                    style={{ color: themeColors.primary }}
-                  />
+                  <CheckCircle2 className="w-10 h-10" style={{ color: themeColors.primary }} />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Password Reset Complete!</h3>
                 <p className="text-sm opacity-80">
@@ -330,19 +317,10 @@ const ForgotPassword = () => {
 
           {/* Footer */}
           {step !== 3 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="mt-6 text-center"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.3 }} className="mt-6 text-center">
               <p className="text-sm opacity-60">
-                Need help?{' '}
-                <a
-                  href="mailto:bookmyspace.today@gmail.com"
-                  className="hover:underline font-medium"
-                  style={{ color: themeColors.primary }}
-                >
+                Need help?{" "}
+                <a href="mailto:bookmyspace.today@gmail.com" className="hover:underline font-medium" style={{ color: themeColors.primary }}>
                   Contact Support
                 </a>
               </p>

@@ -5,15 +5,15 @@ import { useNavigate, Link } from "react-router-dom";
 import { login } from "../redux/features/authSlice.jsx";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useTheme } from "../context/ThemeContext"; // << ThemeContext import
+import { useTheme } from "../context/ThemeContext"; 
 import { motion } from "framer-motion";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const BaseUri = import.meta.env.VITE_BASE_API;
-
-  const { themeColors } = useTheme(); // << Using themeColors
+  console.log("hi")
+  const { themeColors } = useTheme();
 
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "", role: "librarian" });
@@ -97,7 +97,7 @@ const Login = () => {
           style={{
             backgroundColor: themeColors.hover.background,
             color: themeColors.text,
-            borderColor: "#ccc",
+            borderColor: themeColors.active.background,
           }}
         >
           <div className="text-center mb-8">
@@ -123,12 +123,11 @@ const Login = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none ${
-                    errors.email ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none"
                   style={{
-                    backgroundColor: "#f9fafb",
-                    borderColor: errors.email ? "#f87171" : "#ccc",
+                    backgroundColor: themeColors.background,
+                    color: themeColors.text,
+                    border: `1px solid ${errors.email ? "#f87171" : themeColors.hover.text}`,
                   }}
                   placeholder="Enter your email"
                 />
@@ -150,12 +149,11 @@ const Login = () => {
                   autoComplete="current-password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-12 py-3 rounded-xl focus:ring-2 focus:outline-none ${
-                    errors.password ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className="w-full pl-11 pr-12 py-3 rounded-xl focus:ring-2 focus:outline-none"
                   style={{
-                    backgroundColor: "#f9fafb",
-                    borderColor: errors.password ? "#f87171" : "#ccc",
+                    backgroundColor: themeColors.background,
+                    color: themeColors.text,
+                    border: `1px solid ${errors.password ? "#f87171" : themeColors.hover.text}`,
                   }}
                   placeholder="Enter your password"
                 />
@@ -220,7 +218,7 @@ const Login = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline font-medium"
-              style={{ color: '#10B981' }}
+              style={{ color: "#10B981" }}
             >
               Don't have an account? Register
             </a>

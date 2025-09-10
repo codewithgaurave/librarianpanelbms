@@ -4,7 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Lock, Shield, CheckCircle2, ArrowRight, RotateCcw } from "lucide-react";
+import { Lock, Shield, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { logout } from "../redux/features/authSlice";
 
@@ -42,12 +42,10 @@ const ChangePassword = () => {
       toast.success("Password changed successfully");
       setStep(3);
       setRedirecting(true);
-      
-      // Clear user data and redirect to login
+
       setTimeout(() => {
         dispatch(logout());
         navigate("/", { replace: true });
-        // Fallback to window.location in case navigate doesn't work
         setTimeout(() => {
           if (window.location.pathname !== "/") {
             window.location.href = "/";
@@ -61,7 +59,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen flex items-center justify-center p-4 relative"
       style={{ backgroundColor: themeColors.background, color: themeColors.text }}
     >
@@ -70,11 +68,11 @@ const ChangePassword = () => {
         <div
           className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
           style={{ background: themeColors.accent }}
-        ></div>
+        />
         <div
           className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
           style={{ background: themeColors.primary }}
-        ></div>
+        />
       </div>
 
       {/* Main card */}
@@ -87,7 +85,7 @@ const ChangePassword = () => {
           style={{
             backgroundColor: themeColors.hover.background,
             color: themeColors.text,
-            borderColor: "#ccc",
+            borderColor: themeColors.border,
           }}
         >
           {/* Progress indicator */}
@@ -97,10 +95,10 @@ const ChangePassword = () => {
                 <div
                   key={i}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i <= step ? 'opacity-100' : 'opacity-30'
+                    i <= step ? "opacity-100" : "opacity-30"
                   }`}
-                  style={{ 
-                    backgroundColor: i <= step ? themeColors.primary : `${themeColors.primary}50`
+                  style={{
+                    backgroundColor: i <= step ? themeColors.primary : `${themeColors.primary}50`,
                   }}
                 />
               ))}
@@ -111,7 +109,7 @@ const ChangePassword = () => {
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl shadow-lg">
               {step === 1 && (
-                <div 
+                <div
                   className="w-full h-full flex items-center justify-center rounded-2xl"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
@@ -119,7 +117,7 @@ const ChangePassword = () => {
                 </div>
               )}
               {step === 2 && (
-                <div 
+                <div
                   className="w-full h-full flex items-center justify-center rounded-2xl"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
@@ -127,7 +125,7 @@ const ChangePassword = () => {
                 </div>
               )}
               {step === 3 && (
-                <div 
+                <div
                   className="w-full h-full flex items-center justify-center rounded-2xl animate-pulse"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
@@ -135,13 +133,13 @@ const ChangePassword = () => {
                 </div>
               )}
             </div>
-            
+
             <h1 className="text-2xl md:text-3xl font-bold mb-2">
               {step === 1 && "Change Password"}
               {step === 2 && "Verify OTP"}
               {step === 3 && "Success!"}
             </h1>
-            
+
             <p className="text-sm opacity-80">
               {step === 1 && "Enter your current and new password"}
               {step === 2 && "Enter the OTP sent to your email"}
@@ -151,11 +149,7 @@ const ChangePassword = () => {
 
           {/* Step 1: Password Input */}
           {step === 1 && (
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
               <form onSubmit={handleRequestOtp} className="space-y-6">
                 <div>
                   <label htmlFor="currentPassword" className="text-sm font-medium block mb-2">
@@ -171,11 +165,11 @@ const ChangePassword = () => {
                       value={currentPassword}
                       onChange={(e) => setCurrentPassword(e.target.value)}
                       required
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border"
+                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:outline-none border"
                       style={{
-                        backgroundColor: "#f9fafb",
-                        borderColor: "#ccc",
-                        focusRingColor: themeColors.primary,
+                        backgroundColor: themeColors.inputBackground,
+                        borderColor: themeColors.border,
+                        color: themeColors.text,
                       }}
                       placeholder="Enter your current password"
                     />
@@ -196,11 +190,11 @@ const ChangePassword = () => {
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border"
+                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:outline-none border"
                       style={{
-                        backgroundColor: "#f9fafb",
-                        borderColor: "#ccc",
-                        focusRingColor: themeColors.primary,
+                        backgroundColor: themeColors.inputBackground,
+                        borderColor: themeColors.border,
+                        color: themeColors.text,
                       }}
                       placeholder="Enter your new password"
                     />
@@ -227,11 +221,7 @@ const ChangePassword = () => {
 
           {/* Step 2: OTP Verification */}
           {step === 2 && (
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
               <form onSubmit={handleVerifyOtp} className="space-y-6">
                 <div>
                   <label htmlFor="otp" className="text-sm font-medium block mb-2">
@@ -247,11 +237,11 @@ const ChangePassword = () => {
                       onChange={(e) => setOtp(e.target.value)}
                       required
                       maxLength="6"
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border text-center text-lg tracking-widest"
+                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:outline-none border text-center text-lg tracking-widest"
                       style={{
-                        backgroundColor: "#f9fafb",
-                        borderColor: "#ccc",
-                        focusRingColor: themeColors.primary,
+                        backgroundColor: themeColors.inputBackground,
+                        borderColor: themeColors.border,
+                        color: themeColors.text,
                       }}
                       placeholder="Enter 6-digit OTP"
                     />
@@ -278,52 +268,39 @@ const ChangePassword = () => {
 
           {/* Step 3: Success with Redirect */}
           {step === 3 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="text-center"
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }} className="text-center">
               <div className="mb-6">
-                <div 
+                <div
                   className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4 animate-pulse"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
-                  <CheckCircle2 
-                    className="w-10 h-10" 
-                    style={{ color: themeColors.primary }}
-                  />
+                  <CheckCircle2 className="w-10 h-10" style={{ color: themeColors.primary }} />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Password Changed!</h3>
-                <p className="text-sm opacity-80 mb-4">
-                  Your password has been updated successfully.
-                </p>
+                <p className="text-sm opacity-80 mb-4">Your password has been updated successfully.</p>
               </div>
 
-              {/* Redirect notification */}
-              <div 
+              <div
                 className="p-4 rounded-xl border-2 mb-6"
-                style={{ 
+                style={{
                   backgroundColor: `${themeColors.primary}10`,
-                  borderColor: `${themeColors.primary}30`
+                  borderColor: `${themeColors.primary}30`,
                 }}
               >
                 <div className="flex items-center justify-center mb-2">
                   {redirecting && (
-                    <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" 
-                         style={{ color: themeColors.primary }}>
-                    </div>
+                    <div
+                      className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mr-2"
+                      style={{ color: themeColors.primary }}
+                    ></div>
                   )}
                   <span className="font-medium" style={{ color: themeColors.primary }}>
                     Redirecting to Login...
                   </span>
                 </div>
-                <p className="text-xs opacity-70">
-                  Please login with your new password
-                </p>
+                <p className="text-xs opacity-70">Please login with your new password</p>
               </div>
 
-              {/* Manual redirect button */}
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -342,19 +319,10 @@ const ChangePassword = () => {
 
           {/* Footer */}
           {step !== 3 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="mt-6 text-center"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.3 }} className="mt-6 text-center">
               <p className="text-sm opacity-60">
-                Need help?{' '}
-                <a
-                  href="mailto:bookmyspace.today@gmail.com"
-                  className="hover:underline font-medium"
-                  style={{ color: themeColors.primary }}
-                >
+                Need help?{" "}
+                <a href="mailto:bookmyspace.today@gmail.com" className="hover:underline font-medium" style={{ color: themeColors.primary }}>
                   Contact Support
                 </a>
               </p>
