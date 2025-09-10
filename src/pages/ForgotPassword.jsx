@@ -49,11 +49,11 @@ const ForgotPassword = () => {
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div
-          className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 opacity-10 blur-3xl"
           style={{ background: themeColors.accent }}
         ></div>
         <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 opacity-10 blur-3xl"
           style={{ background: themeColors.primary }}
         ></div>
       </div>
@@ -64,7 +64,7 @@ const ForgotPassword = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
-          className="backdrop-blur-xl rounded-3xl shadow-2xl border p-8 md:p-10"
+          className="backdrop-blur-xl shadow-2xl border p-8 md:p-10"
           style={{
             backgroundColor: themeColors.hover.background,
             color: themeColors.text,
@@ -77,7 +77,7 @@ const ForgotPassword = () => {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  className={`w-2 h-2 transition-all duration-300 ${
                     i <= step ? "opacity-100" : "opacity-30"
                   }`}
                   style={{
@@ -90,10 +90,10 @@ const ForgotPassword = () => {
 
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 mb-4 shadow-lg">
               {step === 1 && (
                 <div
-                  className="w-full h-full flex items-center justify-center rounded-2xl"
+                  className="w-full h-full flex items-center justify-center"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <Mail className="w-8 h-8" style={{ color: themeColors.primary }} />
@@ -101,7 +101,7 @@ const ForgotPassword = () => {
               )}
               {step === 2 && (
                 <div
-                  className="w-full h-full flex items-center justify-center rounded-2xl"
+                  className="w-full h-full flex items-center justify-center"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <Shield className="w-8 h-8" style={{ color: themeColors.primary }} />
@@ -109,7 +109,7 @@ const ForgotPassword = () => {
               )}
               {step === 3 && (
                 <div
-                  className="w-full h-full flex items-center justify-center rounded-2xl"
+                  className="w-full h-full flex items-center justify-center"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <CheckCircle2 className="w-8 h-8" style={{ color: themeColors.primary }} />
@@ -148,7 +148,7 @@ const ForgotPassword = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border"
+                      className="w-full pl-11 pr-4 py-3 focus:ring-2 focus:outline-none border"
                       style={{
                         backgroundColor: themeColors.background,
                         color: themeColors.text,
@@ -162,11 +162,11 @@ const ForgotPassword = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 px-4 rounded-xl font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
+                  className="w-full py-3 px-4 font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
                   style={{ backgroundColor: themeColors.primary }}
                 >
                   {loading ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white animate-spin"></div>
                   ) : (
                     <>
                       Send Reset Code <ArrowRight className="w-4 h-4 ml-2" />
@@ -180,7 +180,7 @@ const ForgotPassword = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
                 onClick={() => navigate("/login")}
-                className="w-full mt-4 py-3 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center border-2"
+                className="w-full mt-4 py-3 px-4 font-medium transition-all duration-200 flex items-center justify-center border-2"
                 style={{
                   backgroundColor: "transparent",
                   borderColor: `${themeColors.accent}50`,
@@ -211,7 +211,7 @@ const ForgotPassword = () => {
                       onChange={(e) => setOtp(e.target.value)}
                       required
                       maxLength="6"
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border text-center text-lg tracking-widest"
+                      className="w-full pl-11 pr-4 py-3 focus:ring-2 focus:outline-none border text-center text-lg tracking-widest"
                       style={{
                         backgroundColor: themeColors.background,
                         color: themeColors.text,
@@ -236,7 +236,7 @@ const ForgotPassword = () => {
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:outline-none border"
+                      className="w-full pl-11 pr-4 py-3 focus:ring-2 focus:outline-none border"
                       style={{
                         backgroundColor: themeColors.background,
                         color: themeColors.text,
@@ -250,11 +250,11 @@ const ForgotPassword = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 px-4 rounded-xl font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
+                  className="w-full py-3 px-4 font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
                   style={{ backgroundColor: themeColors.primary }}
                 >
                   {loading ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white animate-spin"></div>
                   ) : (
                     <>
                       Reset Password <ArrowRight className="w-4 h-4 ml-2" />
@@ -268,7 +268,7 @@ const ForgotPassword = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
                 onClick={() => navigate("/login")}
-                className="w-full mt-4 py-3 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center border-2"
+                className="w-full mt-4 py-3 px-4 font-medium transition-all duration-200 flex items-center justify-center border-2"
                 style={{
                   backgroundColor: "transparent",
                   borderColor: `${themeColors.accent}50`,
@@ -291,7 +291,7 @@ const ForgotPassword = () => {
             >
               <div className="mb-6">
                 <div
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4"
+                  className="inline-flex items-center justify-center w-20 h-20 mb-4"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <CheckCircle2 className="w-10 h-10" style={{ color: themeColors.primary }} />
@@ -307,7 +307,7 @@ const ForgotPassword = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 onClick={() => navigate("/login")}
-                className="w-full py-3 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center text-white"
+                className="w-full py-3 px-4 font-medium transition-all duration-200 flex items-center justify-center text-white"
                 style={{ backgroundColor: themeColors.primary }}
               >
                 Continue to Login <ArrowRight className="w-4 h-4 ml-2" />

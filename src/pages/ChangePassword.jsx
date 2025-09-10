@@ -66,11 +66,11 @@ const ChangePassword = () => {
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div
-          className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80  opacity-10 blur-3xl"
           style={{ background: themeColors.accent }}
         />
         <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80  opacity-10 blur-3xl"
           style={{ background: themeColors.primary }}
         />
       </div>
@@ -81,7 +81,7 @@ const ChangePassword = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
-          className="backdrop-blur-xl rounded-3xl shadow-2xl border p-8 md:p-10"
+          className="backdrop-blur-xl  shadow-2xl border p-8 md:p-10"
           style={{
             backgroundColor: themeColors.hover.background,
             color: themeColors.text,
@@ -94,7 +94,7 @@ const ChangePassword = () => {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  className={`w-2 h-2  transition-all duration-300 ${
                     i <= step ? "opacity-100" : "opacity-30"
                   }`}
                   style={{
@@ -107,10 +107,10 @@ const ChangePassword = () => {
 
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 mb-4  shadow-lg">
               {step === 1 && (
                 <div
-                  className="w-full h-full flex items-center justify-center rounded-2xl"
+                  className="w-full h-full flex items-center justify-center "
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <Lock className="w-8 h-8" style={{ color: themeColors.primary }} />
@@ -118,7 +118,7 @@ const ChangePassword = () => {
               )}
               {step === 2 && (
                 <div
-                  className="w-full h-full flex items-center justify-center rounded-2xl"
+                  className="w-full h-full flex items-center justify-center "
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <Shield className="w-8 h-8" style={{ color: themeColors.primary }} />
@@ -126,7 +126,7 @@ const ChangePassword = () => {
               )}
               {step === 3 && (
                 <div
-                  className="w-full h-full flex items-center justify-center rounded-2xl animate-pulse"
+                  className="w-full h-full flex items-center justify-center  animate-pulse"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <CheckCircle2 className="w-8 h-8" style={{ color: themeColors.primary }} />
@@ -165,7 +165,7 @@ const ChangePassword = () => {
                       value={currentPassword}
                       onChange={(e) => setCurrentPassword(e.target.value)}
                       required
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:outline-none border"
+                      className="w-full pl-11 pr-4 py-3  focus:outline-none border"
                       style={{
                         backgroundColor: themeColors.inputBackground,
                         borderColor: themeColors.border,
@@ -190,7 +190,7 @@ const ChangePassword = () => {
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:outline-none border"
+                      className="w-full pl-11 pr-4 py-3  focus:outline-none border"
                       style={{
                         backgroundColor: themeColors.inputBackground,
                         borderColor: themeColors.border,
@@ -204,11 +204,11 @@ const ChangePassword = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 px-4 rounded-xl font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
+                  className="w-full py-3 px-4  font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
                   style={{ backgroundColor: themeColors.primary }}
                 >
                   {loading ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white  animate-spin"></div>
                   ) : (
                     <>
                       Send OTP <ArrowRight className="w-4 h-4 ml-2" />
@@ -237,7 +237,7 @@ const ChangePassword = () => {
                       onChange={(e) => setOtp(e.target.value)}
                       required
                       maxLength="6"
-                      className="w-full pl-11 pr-4 py-3 rounded-xl focus:outline-none border text-center text-lg tracking-widest"
+                      className="w-full pl-11 pr-4 py-3  focus:outline-none border text-center text-lg tracking-widest"
                       style={{
                         backgroundColor: themeColors.inputBackground,
                         borderColor: themeColors.border,
@@ -251,11 +251,11 @@ const ChangePassword = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 px-4 rounded-xl font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
+                  className="w-full py-3 px-4  font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center text-white"
                   style={{ backgroundColor: themeColors.primary }}
                 >
                   {loading ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white  animate-spin"></div>
                   ) : (
                     <>
                       Verify & Change Password <ArrowRight className="w-4 h-4 ml-2" />
@@ -271,7 +271,7 @@ const ChangePassword = () => {
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }} className="text-center">
               <div className="mb-6">
                 <div
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4 animate-pulse"
+                  className="inline-flex items-center justify-center w-20 h-20  mb-4 animate-pulse"
                   style={{ backgroundColor: `${themeColors.primary}20` }}
                 >
                   <CheckCircle2 className="w-10 h-10" style={{ color: themeColors.primary }} />
@@ -281,7 +281,7 @@ const ChangePassword = () => {
               </div>
 
               <div
-                className="p-4 rounded-xl border-2 mb-6"
+                className="p-4  border-2 mb-6"
                 style={{
                   backgroundColor: `${themeColors.primary}10`,
                   borderColor: `${themeColors.primary}30`,
@@ -290,7 +290,7 @@ const ChangePassword = () => {
                 <div className="flex items-center justify-center mb-2">
                   {redirecting && (
                     <div
-                      className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mr-2"
+                      className="w-5 h-5 border-2 border-current border-t-transparent  animate-spin mr-2"
                       style={{ color: themeColors.primary }}
                     ></div>
                   )}
@@ -309,7 +309,7 @@ const ChangePassword = () => {
                   dispatch(logout());
                   navigate("/", { replace: true });
                 }}
-                className="w-full py-3 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center text-white"
+                className="w-full py-3 px-4  font-medium transition-all duration-200 flex items-center justify-center text-white"
                 style={{ backgroundColor: themeColors.primary }}
               >
                 Go to Login Now <ArrowRight className="w-4 h-4 ml-2" />
